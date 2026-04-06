@@ -1,4 +1,4 @@
-const username = "YOUR_GITHUB_USERNAME";
+const username = "luekignbrad";
 const repoContainer = document.getElementById("repo-container");
 
 fetch(`https://api.github.com/users/${username}/repos`)
