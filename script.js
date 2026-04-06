@@ -1,4 +1,4 @@
-const username = "luekignbrad";
+const username = "luekingbrad";
 const repoContainer = document.getElementById("repo-container");
 
 fetch(`https://api.github.com/users/${username}/repos`)
