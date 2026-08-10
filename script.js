@@ -1,12 +1,12 @@
 const username = "luekingbrad";
 
 const featuredRepos = [
-  "AI-Assisted SOC Analyst",
+  "AI-Assisted-SOC-Analyst",
   "Phishnet",
   "Personal-AI-Assistant",
   "Cat-Dog-Image-Classification-CNN",
   "Handwritten-Digit-Classification",
-  "Malware-Family-Clustering-UsingKMeans",
+  "Malware-Family-Clustering-Using-KMeans",
   "AI-LSTM-Web-Log-Anomaly-Detection",
   "Spam-Detection-Using-Unsupervised-Machine-Learning",
   "LSTM-SMS-Spam-Detection"
