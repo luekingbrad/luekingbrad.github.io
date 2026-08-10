@@ -4,37 +4,43 @@ const featuredRepos = [
   "AI-Assisted SOC Analyst",
   "Phishnet",
   "Personal-AI-Assistant",
-  "AI-LSTM-Web-Log-Anomaly-Detection",
   "Cat-Dog-Image-Classification-CNN",
   "Handwritten-Digit-Classification",
   "Malware-Family-Clustering-UsingKMeans",
+  "AI-LSTM-Web-Log-Anomaly-Detection",
   "Spam-Detection-Using-Unsupervised-Machine-Learning",
   "LSTM-SMS-Spam-Detection"
 ];
 
 const repoContainer = document.getElementById("repo-container");
 
-async function loadRepositories() {
-  try {
-    repoContainer.innerHTML = "<p>Loading projects...</p>";
+fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
 
-    const repositories = await Promise.all(
-      featuredRepos.map(async (repoName) => {
-        const response = await fetch(
-          `https://api.github.com/repos/${username}/${encodeURIComponent(repoName)}`
-        );
+    return response.json();
+  })
+  .then(repositories => {
 
-        if (!response.ok) {
-          throw new Error(`Unable to load repository: ${repoName}`);
-        }
-
-        return response.json();
-      })
+    const selectedRepositories = repositories.filter(repo =>
+      featuredRepos.some(featuredName =>
+        repo.name.toLowerCase() === featuredName.toLowerCase()
+      )
     );
 
     repoContainer.innerHTML = "";
 
-    repositories.forEach((repo) => {
+    if (selectedRepositories.length === 0) {
+      repoContainer.innerHTML = `
+        <p>No featured projects were found.</p>
+      `;
+      return;
+    }
+
+    selectedRepositories.forEach(repo => {
+
       const repoCard = document.createElement("div");
       repoCard.classList.add("repo-card");
 
@@ -56,8 +62,9 @@ async function loadRepositories() {
 
       repoContainer.appendChild(repoCard);
     });
+  })
+  .catch(error => {
 
-  } catch (error) {
     console.error("Error loading GitHub repositories:", error);
 
     repoContainer.innerHTML = `
@@ -66,7 +73,4 @@ async function loadRepositories() {
         Please visit my GitHub profile for the complete repository list.
       </p>
     `;
-  }
-}
-
-loadRepositories();
+  });
