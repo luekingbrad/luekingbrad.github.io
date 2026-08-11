@@ -1,6 +1,5 @@
-```css
 /* =========================================
-   GLOBAL STYLES
+   GLOBAL
    ========================================= */
 
 * {
@@ -12,112 +11,157 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  background:
-    radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 30%),
-    radial-gradient(circle at bottom left, rgba(34, 197, 94, 0.05), transparent 30%),
-    #0f172a;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0f172a;
   color: #e2e8f0;
   line-height: 1.6;
 }
 
 
 /* =========================================
-   HEADER / HERO
+   HEADER
    ========================================= */
 
 header {
   position: relative;
+  padding: 5rem 2rem;
+  text-align: center;
   background:
     linear-gradient(
       135deg,
-      rgba(2, 6, 23, 0.98),
-      rgba(15, 23, 42, 0.96)
+      #020617 0%,
+      #0f172a 100%
     );
-  text-align: center;
-  padding: 5rem 2rem 4rem;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
   overflow: hidden;
 }
 
-/* Subtle technical grid effect */
+/* Cybersecurity-style background grid */
+
 header::before {
   content: "";
   position: absolute;
   inset: 0;
+
   background-image:
-    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    linear-gradient(
+      rgba(56, 189, 248, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(56, 189, 248, 0.04) 1px,
+      transparent 1px
+    );
+
   background-size: 40px 40px;
+
   pointer-events: none;
 }
 
-header > * {
+header h1,
+header p {
   position: relative;
   z-index: 1;
 }
 
-h1 {
+header h1 {
   margin: 0;
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
   letter-spacing: -1px;
+
   color: #38bdf8;
-  text-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+
+  text-shadow:
+    0 0 20px rgba(56, 189, 248, 0.25);
 }
 
 header p {
-  max-width: 700px;
+  max-width: 850px;
   margin: 1rem auto 0;
+
   color: #94a3b8;
   font-size: 1.1rem;
 }
 
 
 /* =========================================
-   PROFILE IMAGE
-   ========================================= */
-
-.profile-pic {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-top: 1.5rem;
-  border: 3px solid rgba(56, 189, 248, 0.7);
-  box-shadow:
-    0 0 0 6px rgba(56, 189, 248, 0.06),
-    0 0 35px rgba(56, 189, 248, 0.18);
-}
-
-
-/* =========================================
-   SECTIONS
+   GENERAL SECTIONS
    ========================================= */
 
 section {
-  padding: 4rem 2rem;
   max-width: 1150px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 5rem 2rem;
 }
 
 section h2 {
-  position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+
   font-size: 2rem;
+  font-weight: 700;
+
   color: #f8fafc;
 }
 
 section h2::after {
   content: "";
+
   display: block;
-  width: 55px;
+
+  width: 60px;
   height: 3px;
-  margin-top: 0.7rem;
-  border-radius: 10px;
+
+  margin-top: 0.75rem;
+
   background: #38bdf8;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
+
+#about {
+  background: #0f172a;
+}
+
+#about p {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 3px solid rgba(56, 189, 248, 0.7);
+
+  box-shadow:
+    0 0 0 6px rgba(56, 189, 248, 0.05),
+    0 0 35px rgba(56, 189, 248, 0.2);
+}
+
+
+/* =========================================
+   PROJECT SECTION
+   ========================================= */
+
+#projects {
+  max-width: 1200px;
 }
 
 
@@ -127,8 +171,13 @@ section h2::after {
 
 #repo-container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.75rem;
+
+  width: 100%;
 }
 
 
@@ -136,21 +185,39 @@ section h2::after {
    PROJECT CARDS
    ========================================= */
 
-.repo-card {
+/*
+   We intentionally target direct children
+   instead of relying on .repo-card.
+
+   This means the styling will work with
+   your existing script.js.
+*/
+
+#repo-container > div {
   position: relative;
+
   display: flex;
   flex-direction: column;
-  min-height: 260px;
-  padding: 1.75rem;
+
+  min-height: 300px;
+
+  padding: 1.8rem;
+
   background:
     linear-gradient(
       145deg,
-      rgba(30, 41, 59, 0.98),
-      rgba(15, 23, 42, 0.98)
+      #1e293b 0%,
+      #111827 100%
     );
-  border: 1px solid rgba(148, 163, 184, 0.12);
+
+  border: 1px solid rgba(148, 163, 184, 0.14);
+
   border-radius: 16px;
+
   overflow: hidden;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.2);
 
   transition:
     transform 0.25s ease,
@@ -158,64 +225,98 @@ section h2::after {
     box-shadow 0.25s ease;
 }
 
-/* Accent line along the top of every card */
-.repo-card::before {
+
+/* Top accent */
+
+#repo-container > div::before {
   content: "";
+
   position: absolute;
+
   top: 0;
   left: 0;
   right: 0;
+
   height: 3px;
-  background: linear-gradient(
-    90deg,
-    #38bdf8,
-    #22c55e
-  );
-  opacity: 0.65;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #22c55e
+    );
 }
 
-/* Subtle glow in the corner */
-.repo-card::after {
+
+/* Decorative glow */
+
+#repo-container > div::after {
   content: "";
+
   position: absolute;
-  width: 140px;
-  height: 140px;
-  top: -70px;
-  right: -70px;
+
+  width: 160px;
+  height: 160px;
+
+  top: -90px;
+  right: -90px;
+
   background: rgba(56, 189, 248, 0.08);
+
   border-radius: 50%;
+
   filter: blur(20px);
+
   pointer-events: none;
 }
 
-.repo-card:hover {
+
+/* Hover */
+
+#repo-container > div:hover {
   transform: translateY(-7px);
-  border-color: rgba(56, 189, 248, 0.45);
+
+  border-color:
+    rgba(56, 189, 248, 0.45);
+
   box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 18px 40px rgba(0, 0, 0, 0.35),
     0 0 25px rgba(56, 189, 248, 0.08);
 }
 
 
 /* =========================================
-   PROJECT TITLES
+   PROJECT NUMBER
    ========================================= */
 
-.repo-card h3 {
-  margin: 0 0 0.8rem;
-  color: #f8fafc;
-  font-size: 1.35rem;
-  line-height: 1.3;
+#repo-container > div > :first-child {
+  margin-bottom: 0.5rem;
+
+  color: #38bdf8;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
 }
 
-.repo-card h3::before {
-  content: "PROJECT";
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #38bdf8;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+
+/* =========================================
+   PROJECT TITLE
+   ========================================= */
+
+#repo-container h3 {
+  margin: 0 0 1rem;
+
+  color: #f8fafc;
+
+  font-size: 1.45rem;
+
+  line-height: 1.3;
+
+  word-break: normal;
 }
 
 
@@ -223,36 +324,56 @@ section h2::after {
    PROJECT DESCRIPTION
    ========================================= */
 
-.repo-card p {
-  margin: 0 0 1.5rem;
+#repo-container p {
+  margin: 0 0 1rem;
+
   color: #94a3b8;
+
   font-size: 0.95rem;
+
   line-height: 1.7;
 }
 
 
 /* =========================================
-   GITHUB BUTTON
+   TECHNOLOGIES
    ========================================= */
 
-.repo-card a {
+#repo-container p strong {
+  color: #e2e8f0;
+}
+
+
+/* =========================================
+   GITHUB LINK
+   ========================================= */
+
+#repo-container a {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   align-self: flex-start;
+
   margin-top: auto;
+
   padding: 0.65rem 1rem;
 
   color: #e2e8f0;
-  background: rgba(56, 189, 248, 0.08);
 
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background:
+    rgba(56, 189, 248, 0.08);
+
+  border:
+    1px solid rgba(56, 189, 248, 0.3);
+
   border-radius: 8px;
 
   text-decoration: none;
+
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
 
   transition:
     background 0.2s ease,
@@ -260,15 +381,21 @@ section h2::after {
     transform 0.2s ease;
 }
 
-.repo-card a::after {
+#repo-container a::after {
   content: " →";
+
   color: #38bdf8;
-  transition: transform 0.2s ease;
 }
 
-.repo-card a:hover {
-  background: rgba(56, 189, 248, 0.16);
-  border-color: rgba(56, 189, 248, 0.65);
+#repo-container a:hover {
+  color: #ffffff;
+
+  background:
+    rgba(56, 189, 248, 0.16);
+
+  border-color:
+    rgba(56, 189, 248, 0.65);
+
   transform: translateX(3px);
 }
 
@@ -278,40 +405,75 @@ section h2::after {
    ========================================= */
 
 footer {
-  margin-top: 3rem;
+  margin-top: 2rem;
+
   padding: 2rem;
+
   text-align: center;
+
   background: #020617;
-  border-top: 1px solid rgba(148, 163, 184, 0.1);
+
+  border-top:
+    1px solid rgba(148, 163, 184, 0.1);
 }
 
 footer p {
   margin: 0;
+
   color: #64748b;
+
   font-size: 0.9rem;
 }
 
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   TABLET / MOBILE
    ========================================= */
 
-@media (max-width: 750px) {
-
-  header {
-    padding: 4rem 1.5rem 3rem;
-  }
-
-  section {
-    padding: 3rem 1.25rem;
-  }
+@media (max-width: 800px) {
 
   #repo-container {
     grid-template-columns: 1fr;
   }
 
-  .repo-card {
-    min-height: auto;
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  #repo-container > div {
+    min-height: 280px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 500px) {
+
+  header {
+    padding: 4rem 1.25rem;
+  }
+
+  header h1 {
+    font-size: 2.3rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+
+  #repo-container > div {
+    padding: 1.4rem;
+  }
+
+  #repo-container h3 {
+    font-size: 1.25rem;
   }
 
   .profile-pic {
@@ -319,28 +481,3 @@ footer p {
     height: 150px;
   }
 }
-
-
-/* =========================================
-   SMALL MOBILE DEVICES
-   ========================================= */
-
-@media (max-width: 450px) {
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  .repo-card {
-    padding: 1.4rem;
-  }
-
-  .repo-card h3 {
-    font-size: 1.2rem;
-  }
-}
-```
