@@ -11,7 +11,7 @@ const GITHUB_USERNAME = "luekingbrad";
 // cybersecurity first, followed by AI/ML and foundational work.
 
 const PROJECT_ORDER = [
-    "AI-Assisted SOC Analyst",
+    "AI-Assisted-SOC-Analyst",
     "Phishnet",
     "Personal-AI-Assistant",
     "AI-LSTM-Web-Log-Anomaly-Detection",
