@@ -1,259 +1,840 @@
-/* =========================
-   Global Styles
-========================= */
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0f172a;
-  color: #e2e8f0;
-  line-height: 1.6;
+* {
+  box-sizing: border-box;
 }
 
-/* =========================
-   Header
-========================= */
+html {
+  scroll-behavior: smooth;
+}
 
-header {
-  background: linear-gradient(135deg, #020617, #0f172a);
-  text-align: center;
-  padding: 4rem 2rem;
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background: #020617;
+  color: #e2e8f0;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(14, 165, 233, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(37, 99, 235, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #0f172a 50%,
+      #020617 100%
+    );
+
   border-bottom: 1px solid #1e293b;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #38bdf8;
+
+/* Subtle grid behind hero */
+
+.hero-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(56, 189, 248, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(56, 189, 248, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 50px 50px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent
+  );
 }
 
-header p {
-  margin: 1rem auto 0;
-  max-width: 900px;
-  font-size: 1.15rem;
-  color: #cbd5e1;
-}
 
-/* =========================
-   Sections
-========================= */
+/* Hero content */
 
-section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
+.hero-content {
+  position: relative;
 
-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
-  color: #f8fafc;
-}
+  z-index: 2;
 
-/* =========================
-   About Section
-========================= */
+  width: min(1150px, 90%);
 
-#about .row {
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    300px
+    1fr;
+
   align-items: center;
+
+  gap: 5rem;
 }
 
-#about p {
-  font-size: 1.05rem;
-  color: #cbd5e1;
-}
 
-/* =========================
-   Profile Picture
-========================= */
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.hero-image-container {
+  display: flex;
+
+  justify-content: center;
+}
 
 .profile-pic {
-  display: block;
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
+
   object-fit: cover;
+
   border-radius: 50%;
-  margin: 0 auto;
-  border: 4px solid #38bdf8;
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
-}
 
-/* =========================
-   Project Grid
-========================= */
-
-#repo-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-  align-items: stretch;
-}
-
-
-/* =========================
-   Project Cards
-========================= */
-
-.project-card {
-  background: linear-gradient(
-    145deg,
-    #1e293b,
-    #172033
-  );
-
-  border: 1px solid #334155;
-  border-radius: 16px;
-
-  padding: 1.75rem;
-
-  min-height: 300px;
-
-  display: flex;
-  flex-direction: column;
+  border: 3px solid #38bdf8;
 
   box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.25);
+    0 0 0 10px rgba(56, 189, 248, 0.05),
+    0 0 50px rgba(56, 189, 248, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 0 0 12px rgba(56, 189, 248, 0.06),
+    0 0 70px rgba(56, 189, 248, 0.35);
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-label {
+  margin: 0 0 1rem;
+
+  color: #38bdf8;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: clamp(3rem, 6vw, 5rem);
+
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+.hero h2 {
+  margin: 1.2rem 0;
+
+  color: #38bdf8;
+
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+
+  font-weight: 500;
+}
+
+.hero-description {
+  max-width: 750px;
+
+  margin: 1.5rem 0 2rem;
+
+  color: #cbd5e1;
+
+  font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.hero-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 130px;
+
+  padding: 0.8rem 1.5rem;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* GitHub */
+
+.github-button {
+  background: #f8fafc;
+
+  color: #020617;
+}
+
+.github-button:hover {
+  background: #e2e8f0;
+
+  color: #020617;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* LinkedIn */
+
+.linkedin-button {
+  background: #0284c7;
+
+  color: white;
+}
+
+.linkedin-button:hover {
+  background: #0369a1;
+
+  color: white;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 25px rgba(14, 165, 233, 0.25);
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.content-section {
+  width: min(1150px, 90%);
+
+  margin: 0 auto;
+
+  padding: 6rem 0;
+}
+
+.section-heading {
+  max-width: 800px;
+
+  margin: 0 auto 3.5rem;
+
+  text-align: center;
+}
+
+.section-label {
+  margin-bottom: 0.5rem;
+
+  color: #38bdf8;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 0 0 1rem;
+
+  color: #f8fafc;
+
+  font-size: 2.4rem;
+
+  line-height: 1.2;
+}
+
+.section-heading > p:last-child {
+  color: #94a3b8;
+
+  font-size: 1rem;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+#about {
+  border-bottom: 1px solid #1e293b;
+}
+
+.about-content {
+  max-width: 850px;
+
+  margin: 0 auto;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+
+  color: #cbd5e1;
+
+  font-size: 1.08rem;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-section {
+  background: #020617;
+}
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 1.5rem;
+}
+
+
+/* Skill card */
+
+.skill-card {
+  position: relative;
+
+  padding: 2rem 1.5rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0f172a,
+      #0b1120
+    );
+
+  border: 1px solid #1e293b;
+
+  border-radius: 14px;
 
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-
-/* =========================
-   Hover Effect
-========================= */
-
-.project-card:hover {
-  transform: translateY(-8px);
+.skill-card:hover {
+  transform: translateY(-6px);
 
   border-color: #38bdf8;
 
   box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(56, 189, 248, 0.15);
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(56, 189, 248, 0.08);
 }
 
 
-/* =========================
-   Project Number
-========================= */
+/* Skill icon */
 
-.project-number {
+.skill-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 1.2rem;
+
+  border-radius: 10px;
+
+  background: rgba(14, 165, 233, 0.1);
+
+  border: 1px solid rgba(56, 189, 248, 0.25);
+
   color: #38bdf8;
 
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.8rem;
 
-  text-transform: uppercase;
+  font-weight: 800;
+
   letter-spacing: 1px;
-
-  margin-bottom: 0.6rem;
 }
 
 
-/* =========================
-   Project Title
-========================= */
-
-.project-card h3 {
-  margin: 0 0 1rem 0;
-
-  font-size: 1.4rem;
+.skill-card h3 {
+  margin: 0 0 1.2rem;
 
   color: #f8fafc;
 
-  line-height: 1.3;
+  font-size: 1.2rem;
 }
 
 
-/* =========================
-   Project Description
-========================= */
+.skill-card ul {
+  margin: 0;
 
-.project-description {
-  color: #cbd5e1;
+  padding: 0;
 
-  font-size: 0.95rem;
-
-  line-height: 1.6;
-
-  margin-bottom: 1.25rem;
-
-  flex-grow: 1;
+  list-style: none;
 }
 
 
-/* =========================
-   Technologies
-========================= */
+.skill-card li {
+  position: relative;
 
-.project-technologies {
+  padding-left: 1.1rem;
+
+  margin-bottom: 0.65rem;
+
   color: #94a3b8;
 
   font-size: 0.9rem;
+}
+
+.skill-card li::before {
+  content: "›";
+
+  position: absolute;
+
+  left: 0;
+
+  color: #38bdf8;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-section {
+  border-top: 1px solid #1e293b;
+}
+
+
+/* Existing JavaScript inserts cards here */
+
+#repo-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 1.5rem;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   PROJECT CARDS
+========================================================= */
+
+.project-card {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 360px;
+
+  padding: 1.8rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0f172a,
+      #0b1120
+    );
+
+  border: 1px solid #1e293b;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.project-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    transparent
+  );
+
+  opacity: 0.5;
+}
+
+
+.project-card:hover {
+  transform: translateY(-7px);
+
+  border-color: #38bdf8;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(56, 189, 248, 0.08);
+}
+
+
+/* Project number */
+
+.project-number {
+  margin-bottom: 0.8rem;
+
+  color: #38bdf8;
+
+  font-size: 0.75rem;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* Project title */
+
+.project-card h3 {
+  margin: 0 0 1rem;
+
+  color: #f8fafc;
+
+  font-size: 1.25rem;
+
+  line-height: 1.35;
+}
+
+
+/* Description */
+
+.project-description {
+  flex-grow: 1;
+
+  margin-bottom: 1.2rem;
+
+  color: #94a3b8;
+
+  font-size: 0.92rem;
+
+  line-height: 1.65;
+}
+
+
+/* Technologies */
+
+.project-technologies {
+  margin-bottom: 1.5rem;
+
+  color: #64748b;
+
+  font-size: 0.82rem;
 
   line-height: 1.5;
-
-  margin-bottom: 1.5rem;
 }
 
 .project-technologies strong {
-  color: #e2e8f0;
+  color: #cbd5e1;
 }
 
 
-/* =========================
-   GitHub Link Area
-========================= */
+/* =========================================================
+   PROJECT BUTTON
+========================================================= */
 
 .project-links {
   margin-top: auto;
 }
 
 
-/* =========================
-   GitHub Button
-========================= */
-
 .project-link {
-  display: inline-block;
+  display: inline-flex;
 
-  padding: 0.65rem 1.1rem;
+  align-items: center;
 
-  border-radius: 8px;
+  padding: 0.6rem 1rem;
 
-  background: #0ea5e9;
+  border-radius: 7px;
 
-  color: #ffffff;
+  background: #0284c7;
+
+  color: white;
 
   text-decoration: none;
 
-  font-weight: 600;
+  font-size: 0.85rem;
+
+  font-weight: 700;
 
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 }
 
-.project-link:hover {
-  background: #0284c7;
 
-  color: #ffffff;
+.project-link:hover {
+  background: #0369a1;
+
+  color: white;
 
   transform: translateY(-2px);
 }
 
 
-/* =========================
-   Mobile
-========================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-@media (max-width: 768px) {
+footer {
+  margin-top: 2rem;
+
+  border-top: 1px solid #1e293b;
+
+  background: #020617;
+}
+
+
+.footer-content {
+  width: min(1150px, 90%);
+
+  margin: 0 auto;
+
+  padding: 3rem 0;
+
+  text-align: center;
+}
+
+
+.footer-content h3 {
+  margin: 0 0 0.5rem;
+
+  color: #f8fafc;
+
+  font-size: 1.2rem;
+}
+
+
+.footer-content p {
+  margin: 0.3rem 0;
+
+  color: #64748b;
+
+  font-size: 0.9rem;
+}
+
+
+.footer-links {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1.5rem;
+
+  margin: 1.2rem 0;
+}
+
+
+.footer-links a {
+  color: #38bdf8;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+
+.footer-links a:hover {
+  color: #7dd3fc;
+}
+
+
+.copyright {
+  margin-top: 1.5rem !important;
+
+  font-size: 0.8rem !important;
+
+  color: #475569 !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .hero-content {
+    grid-template-columns: 220px 1fr;
+
+    gap: 3rem;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+
+  .skills-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  #repo-container {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    min-height: auto;
+
+    padding: 5rem 0;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+
+    text-align: center;
+  }
+
+  .hero-image-container {
+    order: 1;
+  }
+
+  .hero-text {
+    order: 2;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .section-heading {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
 
   #repo-container {
     grid-template-columns: 1fr;
@@ -261,6 +842,31 @@ section h2 {
 
   .project-card {
     min-height: auto;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero-label {
+    font-size: 0.7rem;
+  }
+
+  .hero-button {
+    width: 100%;
   }
 
 }
