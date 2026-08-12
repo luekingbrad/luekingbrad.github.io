@@ -86,16 +86,18 @@ section h2 {
 
 #repo-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
   align-items: stretch;
 }
+
 
 /* =========================
    Project Cards
 ========================= */
 
-.repo-card {
+.project-card {
   background: linear-gradient(
     145deg,
     #1e293b,
@@ -107,7 +109,7 @@ section h2 {
 
   padding: 1.75rem;
 
-  min-height: 260px;
+  min-height: 300px;
 
   display: flex;
   flex-direction: column;
@@ -121,96 +123,113 @@ section h2 {
     border-color 0.25s ease;
 }
 
-/* Hover effect */
 
-.repo-card:hover {
+/* =========================
+   Hover Effect
+========================= */
+
+.project-card:hover {
   transform: translateY(-8px);
 
   border-color: #38bdf8;
 
   box-shadow:
     0 15px 35px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(56, 189, 248, 0.12);
+    0 0 20px rgba(56, 189, 248, 0.15);
 }
+
 
 /* =========================
    Project Number
 ========================= */
 
-.repo-card .project-number {
-  display: inline-block;
+.project-number {
+  color: #38bdf8;
 
   font-size: 0.85rem;
   font-weight: 700;
 
-  color: #38bdf8;
-
   text-transform: uppercase;
   letter-spacing: 1px;
 
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
+
 
 /* =========================
    Project Title
 ========================= */
 
-.repo-card h3 {
+.project-card h3 {
   margin: 0 0 1rem 0;
 
-  font-size: 1.45rem;
+  font-size: 1.4rem;
 
   color: #f8fafc;
 
   line-height: 1.3;
 }
 
+
 /* =========================
    Project Description
 ========================= */
 
-.repo-card p {
-  margin: 0 0 1.25rem 0;
-
+.project-description {
   color: #cbd5e1;
 
   font-size: 0.95rem;
 
+  line-height: 1.6;
+
+  margin-bottom: 1.25rem;
+
   flex-grow: 1;
 }
+
 
 /* =========================
    Technologies
 ========================= */
 
-.repo-card .technologies {
-  margin-bottom: 1.25rem;
+.project-technologies {
+  color: #94a3b8;
 
   font-size: 0.9rem;
 
-  color: #94a3b8;
+  line-height: 1.5;
+
+  margin-bottom: 1.5rem;
 }
 
-.repo-card .technologies strong {
+.project-technologies strong {
   color: #e2e8f0;
 }
+
+
+/* =========================
+   GitHub Link Area
+========================= */
+
+.project-links {
+  margin-top: auto;
+}
+
 
 /* =========================
    GitHub Button
 ========================= */
 
-.repo-card a {
+.project-link {
   display: inline-block;
 
-  width: fit-content;
-
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 1.1rem;
 
   border-radius: 8px;
 
   background: #0ea5e9;
 
-  color: white;
+  color: #ffffff;
 
   text-decoration: none;
 
@@ -221,33 +240,14 @@ section h2 {
     transform 0.2s ease;
 }
 
-.repo-card a:hover {
+.project-link:hover {
   background: #0284c7;
+
+  color: #ffffff;
 
   transform: translateY(-2px);
 }
 
-/* =========================
-   Footer
-========================= */
-
-footer {
-  text-align: center;
-
-  padding: 2rem;
-
-  margin-top: 3rem;
-
-  background: #020617;
-
-  border-top: 1px solid #1e293b;
-}
-
-footer p {
-  margin: 0;
-
-  color: #64748b;
-}
 
 /* =========================
    Mobile
@@ -255,29 +255,12 @@ footer p {
 
 @media (max-width: 768px) {
 
-  header {
-    padding: 3rem 1.5rem;
-  }
-
-  header h1 {
-    font-size: 2.25rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  section {
-    padding: 3rem 1.25rem;
-  }
-
   #repo-container {
     grid-template-columns: 1fr;
   }
 
-  .profile-pic {
-    width: 180px;
-    height: 180px;
-    margin-bottom: 2rem;
+  .project-card {
+    min-height: auto;
   }
+
 }
