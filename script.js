@@ -214,7 +214,7 @@ function escapeHTML(value) {
 async function loadProjects() {
 
     const projectsContainer =
-        document.getElementById("projects");
+        document.getElementById("repo-container");
 
     if (!projectsContainer) {
         console.error(
